@@ -45,7 +45,7 @@ function checkUserAndPwd(){
         var userList = localStorage.getItem("userNameList").split(","),
             pwdList = localStorage.getItem("userPwdList").split(",");
     }
-    
+
     // 先判断Array是否有indexOf方法，如果没有就扩展出此方法
     if (!Array.indexOf) {
         Array.prototype.indexOf = function (obj) {
@@ -62,7 +62,7 @@ function checkUserAndPwd(){
         checkUserPassword = pwdList.indexOf(password);
 
     if(checkUserName!==-1 && checkUserName == checkUserPassword){
-        window.location.href = "tmall-index.html";
+        window.location.href = "index.html";
         sessionStorage.setItem("loginUser",username);
     }else{
         document.getElementById("remind_2").innerHTML = "用户名或密码错误！";
