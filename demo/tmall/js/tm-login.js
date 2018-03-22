@@ -35,12 +35,17 @@ function submitTest() {
 function checkUserAndPwd(){
 
     var username = document.getElementById("username").value, //获取username
-        password = document.getElementById("pwd").value, //获取密码
+        password = document.getElementById("pwd").value; //获取密码
 
+    //判断localStorage是否为null
+    if(localStorage.getItem("userNameList")==null){
+        document.getElementById("remind_2").innerHTML = "用户名或密码错误！"; //如果localStorage为null，就显示用户名或密码错误！
+    }else{
         //把localStorage的字符串数据转换成数组
-        userList = localStorage.getItem("userNameList").split(","),
-        pwdList = localStorage.getItem("userPwdList").split(",");
-
+        var userList = localStorage.getItem("userNameList").split(","),
+            pwdList = localStorage.getItem("userPwdList").split(",");
+    }
+    
     // 先判断Array是否有indexOf方法，如果没有就扩展出此方法
     if (!Array.indexOf) {
         Array.prototype.indexOf = function (obj) {
@@ -62,15 +67,4 @@ function checkUserAndPwd(){
     }else{
         document.getElementById("remind_2").innerHTML = "用户名或密码错误！";
     }
-
-
-        // for (var i = 0 ; i < userList.length; i++) {
-        //     if(username == userList[i] && password == pwdList[i]){
-        //         window.location.href = "tmall-index.html";
-        //         sessionStorage.setItem("loginUser",username);
-        //         break;
-        //     }else{
-        //         document.getElementById("remind_2").innerHTML = "用户名或密码错误！";
-        //     }
-        // }
 }
