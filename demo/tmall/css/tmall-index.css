@@ -206,6 +206,10 @@ input{
     color: #ff0036;
 }
 
+#shoppingCartNum{
+    font-style: normal !important;
+    color: #ff0036;
+}
 
 #top-bar{
 	width: 100%;
@@ -243,6 +247,14 @@ input{
 
 .quick-menu>li:hover .hov{
 	color: #ff0036;
+}
+
+#indexLogin{
+    display: block;
+}
+
+#indexUserName{
+    display: none;
 }
 
 #exit{
@@ -787,7 +799,7 @@ input{
 	width: 56px;
 	text-align: justify;
 	text-align-last: justify;
-	font-size: 14px;
+	font-size: 13px;
 	color: #333;
 	line-height: 22px;
 	font-weight: 700;
@@ -1861,4 +1873,121 @@ img{
     margin: 0 auto 10px;
     background-size: cover;
     z-index: 9;
+}
+
+#footer{
+	width: 100%;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    min-height: 558px;
+    border-top: 1px solid #D1D7DC;
+    clear: both;
+    margin: 0;
+    text-align: center;
+    background: #fff;
+    position: relative;
+}
+
+#tmall-ensure{
+	width: 1190px;
+    height: 100px;
+    background: url(../images/tmall/TB14dANRXXXXXbdXXXXXXXXXXXX-1190-100.jpg) no-repeat;
+    margin: 25px auto;
+    padding: 0;
+}
+
+#tmall-desc{
+	width: 1190px;
+    padding-top: 22px;
+    height: 190px;
+    margin: auto;
+    border-top: 1px solid #ededed;
+    position: relative;
+}
+
+#tmall-desc dl {
+    float: left;
+    width: 186px;
+    padding-left: 52px;
+}
+
+#tmall-desc dl dt {
+    color: #646464;
+    font-size: 16px;
+    font-weight: 700;
+    height: 30px;
+    line-height: 30px;
+    text-align: left;
+}
+
+#tmall-desc dl dd {
+    text-align: left;
+}
+    
+#tmall-desc dl a {
+    width: 100px;
+    overflow: hidden;
+    text-align: left;
+    height: 20px;
+    line-height: 20px;
+    color: #8b8b8b;
+    display: block;
+    font-size: 12px;
+}
+
+#tmall-desc #mobile a {
+    width: 105px;
+    height: 105px;
+    line-height: 105px;
+    text-align: center;
+}
+
+#tmall-desc #mobile a img{
+	width: 105px;
+	height: 105px;
+}
+
+#tmall-desc>img{
+	position: absolute;
+	left: 40px;
+	top: 183px;
+	width: 80px;
+	height: auto;
+}
+
+#tmall-copyright {
+    border-top: 2px solid #FF0036;
+    background: #000;
+    text-align: left;
+    min-height: 177px;
+}
+
+.footer-tmallinfo,.footer-otherlink{
+	width: 1190px;
+	margin: 0 auto;
+	color: #fff;
+	line-height: 25px;
+	padding: 5px 0;
+}
+
+#footer p a {
+    margin-right: 3px;
+    color: #fff;
+    outline: 0;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.coptyrightMiddle{
+	line-height: 20px;
+	background-color: #000;
+	color: #a4a4a4;
+	width: 1190px;
+	margin: 0 auto;
+	font-size: 12px;
+}
+
+.coptyrightMiddle span{
+	/*font-size: 12px;*/
+	margin-right: 130px;
 }

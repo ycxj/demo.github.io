@@ -4,6 +4,16 @@ var errRemind = document.getElementById("errRemind"),
     userList = [],
     pwdList = [],
     num;
+
+(function enter(){
+    let pwd_2 = document.getElementById("pwd_2");
+    pwd_2.onkeydown = function(){
+        if(event.keyCode == 13){
+            checkValue();
+        }
+    }
+})();
+
 // 验证value值是否为空
 function checkValue(){
 
