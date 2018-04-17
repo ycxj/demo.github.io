@@ -54,7 +54,7 @@ checkLoginModel();
 function setShoppingCartNum(){
     var shoppingCartNum = document.getElementById("shoppingCartNum"),
     item = localStorage.getItem("itemList");
-    if(item == ""){
+    if(item == ""||item ==null){
         shoppingCartNum.innerHTML = "0";
     }else{
         let itemList = item.split(",");
