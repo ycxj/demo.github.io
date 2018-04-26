@@ -4,12 +4,39 @@
 	<title>demo</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="demo/tmall/css/normalize.css">
-	<link type="text/css" href="demo/tmall/css/bootstrap.min.css"></link>
-	<link type="text/css" href="css/index.css"></link>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="css/index.css"></link>
 </head>
 <body>
-
+	<div id="navBar">
+		<div class="container">
+			<span class="navTitle">YCxiaojun</span>
+		</div>
+	</div>
+	<div id="header">
+		<div class="container">
+			<h1>我的个人作品展示</h1>
+		</div>
+	</div>
+	<div id="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-cs-6 col-sm-6 col-md-4" v-for="item in projectList">
+					<a class="projectBox" target="_blank" v-bind:href="item.href">
+						<div class="imgBox">
+							<img v-bind:src="'img/'+item.img" alt="" class="projectImg">
+						</div>
+						<p class="projectTitle">{{item.title}}</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/projectData.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>

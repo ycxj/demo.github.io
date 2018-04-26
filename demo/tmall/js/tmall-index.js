@@ -85,7 +85,9 @@ $("[href='#noLink']").click(function(){
 
 window.onload = function(){
 	var productList = document.getElementsByClassName("one-grid-price"),
-		guessList = document.getElementsByClassName("gbl-item-img");
+		guessList = document.getElementsByClassName("gbl-item-img"),
+		productNormalList = document.getElementsByClassName("product-normal"),
+		lazyBox = document.getElementsByClassName("product-normal");
 
 	for(var i=0;i<productList.length;i++){
 		(function(i){
@@ -106,3 +108,8 @@ window.onload = function(){
 		})(i);
 	}
 }
+
+$(function() {
+    $("img.lazy").lazyload({
+    });
+});

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>放大镜特效</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#layout{
+			width: 860px;margin: 50px auto 0;
+		}
+		#box{
+		    display: block;
+		    width: 430px;
+		    height: 430px;
+		    border: 1px solid #ccc;
+		    position: relative;
+		    padding: 1px;
+		}
+		#small-box{
+		    position: relative;
+		    z-index: 1;
+		}
+		#small-box img{
+		    top: -100px;
+		    width: 430px;
+		    height: auto;
+		}
+		#float-box {
+		    display: none;
+		    width: 160px;
+		    height: 160px;
+		    position: absolute;
+		    background-attachment: scroll;
+		    background-repeat: repeat;
+		    cursor: move;
+		    z-index: 1;
+		    overflow: hidden;
+		    background-image: url(img/float-img.png);
+		}
+		#mark {
+		    position: absolute;
+		    display: block;
+		    width: 430px;
+		    height: 430px;
+		    background-color: #fff;
+		    filter: alpha(opacity=0);
+		    opacity: 0;
+		    z-index: 10;
+		    cursor: move;
+		}
+		#big-box {
+		    display: none;
+		    position: absolute;
+		    top: 0;
+		    left: 460px;
+		    width: 430px;
+		    height: 430px;
+		    overflow: hidden;
+		    border: 1px solid #ccc;
+		    z-index: 99;
+		    background-color: #fff;
+		}
+		#big-box img {
+		    position: absolute;
+		    z-index: 5;
+		}
+	</style>
+</head>
+<body>
+	<div id="layout">
+		<div id="box">
+			<div id="small-box">
+				<div id="mark"></div>
+				<div id="float-box"></div>
+				<img src="img/img.jpg" id="small-img">
+			</div>
+			<div id="big-box">
+				<img src="img/img.jpg" id="big-img">
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+	var objGallery = document.getElementById("box"),
+        objSmallBox = document.getElementById("small-box"),
+        objMark = document.getElementById("mark"),
+        objFloatBox = document.getElementById("float-box"),
+        objBigBox = document.getElementById("big-box"),
+        objBigBoxImage = objBigBox.getElementsByTagName("img")[0];
+
+    objMark.onmouseover = function () {
+        objFloatBox.style.display = "block"
+        objBigBox.style.display = "block"
+    }
+
+    objMark.onmouseout = function () {
+        objFloatBox.style.display = "none"
+        objBigBox.style.display = "none"
+    }
+
+    objMark.onmousemove = function (ev) {
+
+        var _event = ev || window.event;  //兼容多个浏览器的event参数模式
+
+        var left = _event.pageX - objGallery.offsetLeft - objFloatBox.offsetWidth/2;
+
+        var top = _event.pageY - objGallery.offsetTop - objFloatBox.offsetHeight/2;
+
+        var floatRangeX = objGallery.offsetWidth - objFloatBox.offsetWidth;
+
+        var floatRangeY = objGallery.offsetHeight - objFloatBox.offsetHeight; 
+        
+        //设置边界处理，防止移出小图片
+        if(left < 0){
+            left = 0;      
+        }else if(left > floatRangeX){
+            left = floatRangeX;
+        }
+
+        if(top < 0){
+            top = 0;      
+        }else if(top > floatRangeY){
+            top = floatRangeY;
+        } 
+
+        //赋值
+        objFloatBox.style.left = left + 'px';
+        objFloatBox.style.top = top + 'px';    
+        //大图跟着移动
+        var sl = left * objBigBox.offsetWidth / objFloatBox.offsetWidth;
+        var st = top * objBigBox.offsetHeight / objFloatBox.offsetHeight;
+        objBigBox.scrollTop = st;
+        objBigBox.scrollLeft = sl;
+    }
+</script>
+</body>
+</html>
