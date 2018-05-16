@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset = "utf-8" />
+<!-- <script src = "./jswaterfll.js"></script> -->
+    <title>瀑布流布局</title>
+    <style type="text/css">
+    *{
+        padding: 0px;
+        margin: 0px;
+    }
+
+    #main{
+        position: relative;
+
+    }
+    .box{
+/*      display: inline-block;*/
+        padding: 15px 0px 0px 15px;
+        float: left;
+
+    }
+    .pic{
+        padding: 10px;
+        border-radius: 5px;
+        border:1px solid #ccc;
+        box-shadow: 0 0 5px #ccc;
+    }
+
+    .pic img{
+        width: 165px;
+        height: auto;
+    }
+    </style>
+</head>
+<body>
+<div id = "main">
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/0.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/1.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/2.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/3.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/4.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/5.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/6.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/7.jpg">
+        </div>
+    </div>
+
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/8.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/9.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/10.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/11.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/12.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/13.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/14.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/15.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/16.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/17.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/18.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/19.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/20.jpg">
+        </div>
+    </div>
+    <div class = "box">
+        <div class = "pic">
+            <img src = "img/21.jpg">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+window.onload = function(){
+    waterFull('main','box');
+}
+
+function waterFull(parent,children){
+    var oParent = document.getElementById(parent);
+    //var oBoxs = parent.querySelectorAll(".box");
+
+     var oBoxs = getByClass(oParent,children);
+
+    //计算整个页面显示的列数
+
+    var oBoxW = oBoxs[0].offsetWidth;
+
+    var cols = Math.floor(document.documentElement.clientWidth/oBoxW);
+
+    //设置main的宽度，并且居中
+
+    oParent.style.cssText = 'width:'+oBoxW * cols +'px; margin: 0 auto';
+
+    //找出高度最小的图片，将下一个图片放在下面
+
+    //定义一个数组，存放每一列的高度，初始化存的是第一行的所有列的高度
+
+    var arrH = [];
+
+    for(var i = 0; i< oBoxs.length ; i++){
+        if(i < cols){
+            arrH.push(oBoxs[i].offsetHeight);
+        }
+        else{
+            var minH = Math.min.apply(null,arrH);
+
+            var minIndex = getMinhIndex(arrH,minH);
+
+            oBoxs[i].style.position = 'absolute';
+            oBoxs[i].style.top= minH + 'px';
+            oBoxs[i].style.left = minIndex * oBoxW + 'px'; 
+        //  oBoxs[i].style.left = arrH[minIndex].;
+
+            arrH[minIndex] += oBoxs[i].offsetHeight; 
+        }
+    }
+
+
+}
+function getByClass(parent,className){
+
+    var boxArr = new Array();//用来获取所有class为box的元素
+
+    oElement = parent.getElementsByTagName('*');
+
+    for (var i = 0; i <oElement.length; i++) {
+
+        if(oElement[i].className == className){
+
+            boxArr.push(oElement[i]);
+
+        }
+    };
+    return boxArr;
+}
+
+
+//获取当前最小值得下标
+function getMinhIndex(array,min){
+
+    for(var i in array){
+
+        if(array[i] == min)
+
+            return i;
+    }
+}
+</script>
+</body>
+</html>

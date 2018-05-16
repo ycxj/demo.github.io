@@ -79,35 +79,35 @@
 		</div>
 	</div>
 <script type="text/javascript">
-	var objGallery = document.getElementById("box"),
-        objSmallBox = document.getElementById("small-box"),
-        objMark = document.getElementById("mark"),
-        objFloatBox = document.getElementById("float-box"),
-        objBigBox = document.getElementById("big-box"),
-        objBigBoxImage = objBigBox.getElementsByTagName("img")[0];
+	var box = document.getElementById("box"),
+        mark = document.getElementById("mark"),
+        floatBox = document.getElementById("float-box"),
+        bigBox = document.getElementById("big-box"),
+        bigImg = document.getElementById("big-img");   
 
-    objMark.onmouseover = function () {
-        objFloatBox.style.display = "block"
-        objBigBox.style.display = "block"
+    // 鼠标进入mark区域，floatBox跟bigBox显示
+    mark.onmouseover = function () {
+        floatBox.style.display = "block"
+        bigBox.style.display = "block"
+    }
+    // 鼠标离开mark区域，floatBox跟bigBox隐藏
+    mark.onmouseout = function () {
+        floatBox.style.display = "none"
+        bigBox.style.display = "none"
     }
 
-    objMark.onmouseout = function () {
-        objFloatBox.style.display = "none"
-        objBigBox.style.display = "none"
-    }
-
-    objMark.onmousemove = function (ev) {
+    // 鼠标在mark内移动
+    mark.onmousemove = function (ev) {
 
         var _event = ev || window.event;  //兼容多个浏览器的event参数模式
 
-        var left = _event.pageX - objGallery.offsetLeft - objFloatBox.offsetWidth/2;
+        var left = _event.clientX - box.offsetLeft - floatBox.offsetWidth/2;
 
-        var top = _event.pageY - objGallery.offsetTop - objFloatBox.offsetHeight/2;
+        var top = _event.clientY - box.offsetTop - floatBox.offsetHeight/2;
 
-        var floatRangeX = objGallery.offsetWidth - objFloatBox.offsetWidth;
+        var floatRangeX = box.offsetWidth - floatBox.offsetWidth;
 
-        var floatRangeY = objGallery.offsetHeight - objFloatBox.offsetHeight; 
-        
+        var floatRangeY = box.offsetHeight - floatBox.offsetHeight; 
         //设置边界处理，防止移出小图片
         if(left < 0){
             left = 0;      
@@ -122,13 +122,22 @@
         } 
 
         //赋值
-        objFloatBox.style.left = left + 'px';
-        objFloatBox.style.top = top + 'px';    
-        //大图跟着移动
-        var sl = left * objBigBox.offsetWidth / objFloatBox.offsetWidth;
-        var st = top * objBigBox.offsetHeight / objFloatBox.offsetHeight;
-        objBigBox.scrollTop = st;
-        objBigBox.scrollLeft = sl;
+        floatBox.style.left = left + 'px';
+        floatBox.style.top = top + 'px';
+
+        //计算move块实际坐标占可移动范围的比例
+        var w = left/floatRangeX,
+        	h = top/floatRangeY;
+        //计算大图的移动的范围
+        var bigRangeLeft = bigImg.offsetWidth-bigBox.offsetWidth,
+        	bigRangeTop = bigImg.offsetHeight-bigBox.offsetHeight;
+
+        //计算大图的位置
+        var bigLeft = bigRangeLeft*w,
+        	bigTop = bigRangeTop*h;
+        //赋值
+        bigBox.scrollTop = bigTop;
+        bigBox.scrollLeft = bigLeft;
     }
 </script>
 </body>
