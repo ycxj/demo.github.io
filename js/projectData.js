@@ -32,10 +32,5 @@ var project = [
 		"id":"1",
 		"title":"客户管理系统",
 		"img":"6.cebf25e7.jpg"
-	},
-	{
-		"id":"1",
-		"title":"客户管理系统",
-		"img":"6.cebf25e7.jpg"
 	}
 ]
