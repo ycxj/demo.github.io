@@ -20,7 +20,7 @@ var project = [
 	{
 		"id":"1",
 		"title":"基于JQuery无缝轮播",
-		"img":"banner.png"，
+		"img":"banner.png",
 		"href": "demo/banner/banner.html"
 	},
 	{
