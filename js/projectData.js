@@ -19,8 +19,9 @@ var project = [
 	},
 	{
 		"id":"1",
-		"title":"客户管理系统",
-		"img":"6.cebf25e7.jpg"
+		"title":"基于JQuery无缝轮播",
+		"img":"banner.png"，
+		"href": "demo/banner/banner.html"
 	},
 	{
 		"id":"1",
