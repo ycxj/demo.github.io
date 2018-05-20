@@ -18,9 +18,15 @@ var project = [
 		"href": "demo/vue-jd-app/index.html"
 	},
 	{
-		"id":"1",
+		"id":"4",
 		"title":"基于JQuery无缝轮播",
 		"img":"banner.png",
 		"href": "demo/banner/banner.html"
+	},
+	{
+		"id":"5",
+		"title":"个人PS作品",
+		"img":"my_psApp.jpg",
+		"href": "demo/appShow/index.html"
 	}
 ]
